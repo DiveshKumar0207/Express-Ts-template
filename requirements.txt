@@ -1,0 +1,2 @@
+private key generation command : openssl ec -in private.pem -pubout -out public.pem
+public key generation command : openssl ecparam -name prime256v1 -genkey -noout -out private.pem
