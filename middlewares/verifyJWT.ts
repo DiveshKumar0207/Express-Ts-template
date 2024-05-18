@@ -4,18 +4,10 @@ import { Request, Response, NextFunction } from "express";
 
 const publickey = fs.readFileSync('public.pem', 'utf8');
 
-
-interface IJwt extends  jwt.JwtPayload {
-    userId : String,
-    email : String,
-}
-
-interface CustomRequest extends Request {
-    user?: IJwt;
-}
+import { IJwt } from "../express";
 
 
-const verifyJWT = (req:CustomRequest, res: Response, next: NextFunction)=>{
+const verifyJWT = (req:Request, res: Response, next: NextFunction)=>{
 
     try {
         const accessToken = req.headers.authorization?.split(" ")[1];
